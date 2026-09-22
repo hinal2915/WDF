@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Register</title>
+    <style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:#eef7ff;font-family:Arial,sans-serif;transition:0.3s;}
+header{background:#198754;color:white;text-align:center;padding:20px;position:relative;}
+nav{margin-top:15px;}
+nav a{display:inline-block;background:white;color:#198754;text-decoration:none;padding:10px 20px;border-radius:6px;font-weight:bold;}
+nav a:hover{background:#146c43;color:white;}
+main{width:450px;max-width:90%;margin:40px auto;}
+form{background:white;padding:30px;border-radius:12px;box-shadow:0 5px 15px rgba(0,0,0,.2);transition:0.3s;}
+label{display:block;margin-top:15px;font-weight:bold;}
+input[type="text"], input[type="email"], input[type="password"], select{width:100%;padding:12px;margin-top:5px;border:1px solid #ccc;border-radius:6px;}
+button[type="submit"]{width:100%;margin-top:25px;padding:12px;background:#198754;color:white;border:none;border-radius:6px;cursor:pointer;font-weight:bold;}
+button[type="submit"]:hover{background:#146c43;}
+footer{text-align:center;margin-top:20px;margin-bottom:30px;}
+
+.ui-btn {position: absolute; top: 20px; background: white; color: #198754; border: none; padding: 8px 12px; border-radius: 5px; cursor: pointer; font-weight: bold;}
+#themeToggle {right: 20px;}
+#menuToggle {right: 110px; display: none;}
+.dark-mode {background: #121212; color: #eee;}
+.dark-mode form {background: #1e1e1e;}
+.dark-mode input[type="text"], .dark-mode input[type="email"], .dark-mode input[type="password"], .dark-mode select {background: #333; color: white; border: 1px solid #555;}
+.dark-mode header {background: #111;}
+
+@media (max-width: 600px) {
+    #menuToggle {display: block;}
+    nav {display: none; flex-direction: column; gap: 10px;}
+    nav.active {display: flex;}
+}
+
+/* --- NEW CSS FOR PRACTICAL 5 (VALIDATION) --- */
+.error-msg {color: red; font-size: 13px; display: none; margin-top: 5px;}
+.dark-mode .error-msg {color: #ff6b6b;}
+.radio-group, .checkbox-group {margin-top: 10px;}
+input[type="radio"], input[type="checkbox"] {width: auto; margin-right: 5px;}
+.inline-label {display: inline; font-weight: normal; margin-top: 0;}
+    </style>
+</head>
+<body>
+<header>
+    <button id="menuToggle" class="ui-btn">☰ Menu</button>
+    <button id="themeToggle" class="ui-btn">🌙 Theme</button>
+    <h1>Create Account</h1>
+    <nav id="navMenu">
+        <a href="index.html">Home Page</a>
+        <p></p>
+    </nav>
+</header>
+<main>
+    <form id="regForm">
+        <!-- Name -->
+        <label for="name">Name</label>
+        <input type="text" id="name" placeholder="Enter your full name">
+        <div class="error-msg" id="nameErr">Please enter a valid name (letters only, min 3 chars).</div>
+
+        <!-- Email -->
+        <label for="email">Email</label>
+        <input type="email" id="email" placeholder="example@student.com">
+        <div class="error-msg" id="emailErr">Please enter a valid email address.</div>
+
+        <!-- Mobile Number -->
+        <label for="mobile">Mobile Number</label>
+        <input type="text" id="mobile" placeholder="10-digit mobile number">
+        <div class="error-msg" id="mobileErr">Please enter a valid 10-digit mobile number.</div>
+
+        <!-- Course -->
+        <label for="course">Course</label>
+        <select id="course">
+            <option value="">Select your course</option>
+            <option value="B.Tech">B.Tech</option>
+            <option value="B.Sc">B.Sc</option>
+            <option value="BCA">BCA</option>
+        </select>
+        <div class="error-msg" id="courseErr">Please select a course.</div>
+
+        <!-- Year -->
+        <label for="year">Year</label>
+        <select id="year">
+            <option value="">Select your year</option>
+            <option value="1">1st Year</option>
+            <option value="2">2nd Year</option>
+            <option value="3">3rd Year</option>
+            <option value="4">4th Year</option>
+        </select>
+        <div class="error-msg" id="yearErr">Please select a year.</div>
+
+        <!-- Gender -->
+        <label>Gender</label>
+        <div class="radio-group">
+            <input type="radio" name="gender" id="male" value="Male"> <label for="male" class="inline-label">Male</label>
+            <input type="radio" name="gender" id="female" value="Female" style="margin-left: 15px;"> <label for="female" class="inline-label">Female</label>
+        </div>
+        <div class="error-msg" id="genderErr">Please select your gender.</div>
+
+        <!-- Password -->
+        <label for="password">Password</label>
+        <input type="password" id="password" placeholder="Min 8 chars, 1 letter, 1 number">
+        <div class="error-msg" id="passwordErr">Password must be at least 8 characters long and contain at least one letter and one number.</div>
+
+        <!-- Confirm Password -->
+        <label for="confirmPassword">Confirm Password</label>
+        <input type="password" id="confirmPassword" placeholder="Re-enter your password">
+        <div class="error-msg" id="confirmPasswordErr">Passwords do not match.</div>
+
+        <!-- Terms Acceptance -->
+        <div class="checkbox-group" style="margin-top: 20px;">
+            <input type="checkbox" id="terms">
+            <label for="terms" class="inline-label">I accept the terms and conditions</label>
+        </div>
+        <div class="error-msg" id="termsErr">You must accept the terms and conditions.</div>
+
+        <button type="submit">Register</button>
+    </form>
+</main>
+<footer>
+    <p>2026 StudentHub</p>
+</footer>
+
+<script>
+    document.getElementById('menuToggle').addEventListener('click', () => document.getElementById('navMenu').classList.toggle('active'));
+    document.getElementById('themeToggle').addEventListener('click', () => document.body.classList.toggle('dark-mode'));
+
+    document.getElementById('regForm').addEventListener('submit', function(event) {
+        event.preventDefault(); // Prevent form from submitting normally
+        let isValid = true;
+        document.querySelectorAll('.error-msg').forEach(el => el.style.display = 'none');
+
+        const nameRegex = /^[a-zA-Z\s]{3,}$/; // Only letters and spaces, at least 3 chars
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        const mobileRegex = /^[0-9]{10}$/; // Exactly 10 digits
+        const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d@$!%*#?&]{8,}$/; // Minimum eight characters, at least one letter and one number
+        if (!nameRegex.test(document.getElementById('name').value.trim())) {
+            document.getElementById('nameErr').style.display = 'block';
+            isValid = false;
+        }
+        if (!emailRegex.test(document.getElementById('email').value.trim())) {
+            document.getElementById('emailErr').style.display = 'block';
+            isValid = false;
+        }
+        if (!mobileRegex.test(document.getElementById('mobile').value.trim())) {
+            document.getElementById('mobileErr').style.display = 'block';
+            isValid = false;
+        }
+        if (document.getElementById('course').value === "") {
+            document.getElementById('courseErr').style.display = 'block';
+            isValid = false;
+        }
+        if (document.getElementById('year').value === "") {
+            document.getElementById('yearErr').style.display = 'block';
+            isValid = false;
+        }
+        if (!document.querySelector('input[name="gender"]:checked')) {
+            document.getElementById('genderErr').style.display = 'block';
+            isValid = false;
+        }
+        const passwordVal = document.getElementById('password').value;
+        if (!passwordRegex.test(passwordVal)) {
+            document.getElementById('passwordErr').style.display = 'block';
+            isValid = false;
+        }
+        const confirmPasswordVal = document.getElementById('confirmPassword').value;
+        if (passwordVal !== confirmPasswordVal || confirmPasswordVal === "") {
+            document.getElementById('confirmPasswordErr').style.display = 'block';
+            isValid = false;
+        }
+        if (!document.getElementById('terms').checked) {
+            document.getElementById('termsErr').style.display = 'block';
+            isValid = false;
+        }
+        if (isValid) {
+            alert("Registration Successful! Welcome to StudentHub.");
+            this.reset(); // Clear form after successful submit
+        }
+    });
+</script>
+</body>
+</html>
