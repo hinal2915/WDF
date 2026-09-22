@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:linear-gradient(135deg,#2196f3,#64b5f6);font-family:Arial,sans-serif;display:flex;justify-content:center;align-items:center;height:100vh;transition:0.3s;}
+header{position:absolute;top:30px;text-align:center;color:white;width:100%;}
+nav{margin-top:15px;}
+nav a{display:inline-block;background:white;color:#0d6efd;text-decoration:none;padding:10px 20px;border-radius:6px;font-weight:bold;}
+nav a:hover{background:#084298;color:white;}
+form{background:white;padding:35px;width:350px;border-radius:12px;box-shadow:0 5px 15px rgba(0,0,0,.25);transition:0.3s;}
+h2{text-align:center;margin-bottom:20px;color:#0d47a1;}
+label{display:block;margin-top:15px;font-weight:bold;}
+input{width:100%;padding:12px;margin-top:5px;border:1px solid #ccc;border-radius:6px;}
+button[type="submit"]{width:100%;margin-top:20px;padding:12px;background:#0d6efd;color:white;border:none;border-radius:6px;cursor:pointer;}
+button[type="submit"]:hover{background:#084298;}
+
+.ui-btn {position: absolute; top: 0; right: 20px; background: white; color: #0d6efd; border: none; padding: 8px 12px; border-radius: 5px; cursor: pointer; font-weight: bold;}
+.dark-mode {background: linear-gradient(135deg,#121212,#333); color: #eee;}
+.dark-mode form {background: #1e1e1e;}
+.dark-mode h2 {color: #64b5f6;}
+.dark-mode input {background: #333; color: white; border: 1px solid #555;}
+    </style>
+</head>
+<body>
+<header>
+    <button id="themeToggle" class="ui-btn">🌙 Theme</button>
+    <h1>Login</h1>
+    <nav>
+        <a href="index.html">Home Page</a>
+        <p></p>
+    </nav>
+</header>
+<main>
+    <form>
+        <label for="email">Email</label><br>
+        <input type="email" id="email"><br><br>
+        <label for="password">Password</label><br>
+        <input type="password" id="password"><br><br>
+        <button type="submit">Login</button>
+    </form>
+</main>
+<script>
+    document.getElementById('themeToggle').addEventListener('click', () => document.body.classList.toggle('dark-mode'));
+</script>
+</body>
+</html>

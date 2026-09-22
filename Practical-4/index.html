@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StudentHub - Home</title>
+    <style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:#f2f7fb;font-family:Arial, Helvetica, sans-serif;color:#333;transition:0.3s;}
+header{background:#0d6efd;color:white;text-align:center;padding:20px;position:relative;}
+header img{border-radius:50%;border:3px solid white;margin-bottom:10px;}
+header h1{margin-bottom:15px;font-size:40px;}
+nav ul{list-style:none;display:flex;justify-content:center;gap:15px;flex-wrap:wrap;transition:0.3s;}
+nav ul li a{text-decoration:none;color:white;background:#084298;padding:10px 18px;border-radius:20px;}
+nav ul li a:hover{background:white;color:#084298;}
+main{width:90%;margin:30px auto;}
+section{background:white;margin-bottom:20px;padding:25px;border-radius:10px;box-shadow:0 4px 10px rgba(0,0,0,0.1);transition:0.3s;}
+section h2{color:#0d6efd;margin-bottom:15px;}
+section p{line-height:1.7;}
+section ul{margin-left:20px;}
+section ul li{margin:8px 0;}
+.card{display:inline-block;width:250px;padding:20px;margin:15px;background:#e9f3ff;border-radius:10px;text-align:center;box-shadow:0 3px 8px rgba(0,0,0,0.15);transition:0.3s;}
+.card:hover{background:#0d6efd;color:white;transform:translateY(-5px);}
+footer{background:#0d6efd;color:white;text-align:center;padding:15px;margin-top:20px;}
+
+/* Practical 4 CSS */
+#notificationBanner {background: #ffaf2eec; color: white; text-align: center; padding: 10px; font-weight: bold; position: relative;}
+#closeBanner {position: absolute; right: 20px; top: 10px; background: none; border: none; color: white; font-weight: bold; cursor: pointer;}
+.ui-btn {position: absolute; top: 20px; background: white; color: #0d6efd; border: none; padding: 8px 12px; border-radius: 5px; cursor: pointer; font-weight: bold;}
+#themeToggle {right: 20px;}
+#menuToggle {right: 110px; display: none;}
+.dark-mode {background: #121212; color: #eee;}
+.dark-mode section {background: #1e1e1e; box-shadow: 0 4px 10px rgba(255,255,255,0.05);}
+.dark-mode header, .dark-mode footer {background: #111;}
+.slider-container {text-align: center; margin-top: 20px; padding: 20px; background: #e9f3ff; border-radius: 10px;}
+.dark-mode .slider-container {background: #2a2a2a;}
+.slide {display: none; min-height: 80px;}
+.slide.active {display: block;}
+.slider-controls button {background: #0d6efd; color: white; border: none; padding: 8px 15px; margin: 10px 5px 0; border-radius: 5px; cursor: pointer;}
+
+@media (max-width: 600px) {
+    #menuToggle {display: block;}
+    nav ul {display: none; flex-direction: column; background: #084298; padding: 15px; border-radius: 10px;}
+    nav ul.active {display: flex;}
+}
+    </style>
+</head>
+<body>
+
+<div id="notificationBanner">
+    Important: Review the new project submission guidelines! <button id="closeBanner">X</button>
+</div>
+
+<header>
+    <button id="menuToggle" class="ui-btn">☰ Menu</button>
+    <button id="themeToggle" class="ui-btn">🌙 Theme</button>
+    <img src="logo.jpg"alt="StudentHub Logo" style="width: 100px; height: auto;">
+    <h1>StudentHub</h1>
+    <nav aria-label="Main Navigation">
+        <ul id="navMenu">
+        <li><a href="about.html">About</a></li>
+        <li><a href="registration.html">Register</a></li>
+        <li><a href="login.html">Login</a></li>
+        <li><a href="dashboard.html">Dashboard</a></li>
+        <li><a href="admin.html">Admin</a></li>
+        </ul>
+    </nav>
+</header>
+<main>
+    <section>
+        <h2>Welcome to StudentHub</h2>
+        <p> StudentHub is an online platform that helps students connect,
+            participate in campus activities, and access important information
+            in one place.</p>
+    </section>
+     <section>
+        <h2>Features</h2>
+        <ul>
+            <li>Student Registration</li>
+            <li>Secure Login System</li>
+            <li>Student Dashboard</li>
+            <li>View Upcoming Events</li>
+            <li>Manage Student Profile</li>
+            <li>Submit Feedback</li>
+            <li>Contact Support</li>
+        </ul>
+    </section>
+      <section>
+        <h2>Why Choose StudentHub?</h2>
+        <p>
+            StudentHub makes it easy for students to stay informed about college
+            events, manage their profiles, and communicate with the administration
+            through one convenient platform.
+        </p>
+    </section>
+
+    <!-- NEW SLIDER COMPONENT -->
+    <section>
+        <h2>Student Project Showcase</h2>
+        <div class="slider-container">
+            <div class="slide active">
+                <h3 style="color:#0d6efd;">Digital Electronics</h3>
+                <p>Traffic light controller circuit successfully simulated using D Flip-Flops in Tinkercad.</p>
+            </div>
+            <div class="slide">
+                <h3 style="color:#0d6efd;">Environmental Science</h3>
+                <p>Hardcopy nuclear pollution poster featuring custom educational points and imagery.</p>
+            </div>
+            <div class="slide">
+                <h3 style="color:#0d6efd;">Product Design</h3>
+                <p>Realistic smartphone case mockups featuring avocados, math symbols, and space themes.</p>
+            </div>
+            <div class="slider-controls">
+                <button id="prevBtn">Previous</button>
+                <button id="nextBtn">Next</button>
+            </div>
+        </div>
+    </section>
+
+</main>
+<footer>
+    <p>@2026 StudentHub</p>
+</footer>
+
+<script>
+    document.getElementById('closeBanner').addEventListener('click', () => document.getElementById('notificationBanner').style.display = 'none');
+        document.getElementById('menuToggle').addEventListener('click', () => document.getElementById('navMenu').classList.toggle('active'));
+        document.getElementById('themeToggle').addEventListener('click', function() {
+        document.body.classList.toggle('dark-mode');
+        this.textContent = document.body.classList.contains('dark-mode') ? '☀️ Theme' : '🌙 Theme';
+    });
+    let slides = document.querySelectorAll('.slide');
+    let currentSlide = 0;
+    document.getElementById('nextBtn').addEventListener('click', () => {
+        slides[currentSlide].classList.remove('active');
+        currentSlide = (currentSlide + 1) % slides.length;
+        slides[currentSlide].classList.add('active');
+    });
+    document.getElementById('prevBtn').addEventListener('click', () => {
+        slides[currentSlide].classList.remove('active');
+        currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+        slides[currentSlide].classList.add('active');
+    });
+</script>
+</body>
+</html>

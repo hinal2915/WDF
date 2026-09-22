@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Events</title>
+    <style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:#fff8ef;font-family:Arial,sans-serif;transition:0.3s;}
+header{background:#ff9800;color:white;padding:20px;text-align:center;position:relative;}
+nav{margin-top:15px;}
+nav a{display:inline-block;background:white;color:#ff9800;text-decoration:none;padding:10px 20px;border-radius:6px;font-weight:bold;}
+nav a:hover{background:#e65100;color:white;}
+section{width:80%;margin:30px auto;background:white;padding:25px;border-radius:10px;box-shadow:0 4px 10px rgba(0,0,0,.2);transition:0.3s;}
+h2{margin-bottom:20px;color:#ff9800;}
+ul{margin-left:20px;}
+li{padding:10px;margin-bottom:10px;background:#fff3e0;border-radius:5px; display:flex; justify-content:space-between; align-items:center;}
+
+.ui-btn {position: absolute; top: 20px; background: white; color: #ff9800; border: none; padding: 8px 12px; border-radius: 5px; cursor: pointer; font-weight: bold;}
+#themeToggle {right: 20px;}
+#menuToggle {right: 110px; display: none;}
+.dark-mode {background: #121212; color: #eee;}
+.dark-mode section {background: #1e1e1e;}
+.dark-mode header {background: #222;}
+.dark-mode li {background: #333; color: white;}
+
+.modal-btn {background: #ff9800; color: white; border: none; padding: 5px 12px; border-radius: 4px; cursor: pointer;}
+.modal {display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.6);}
+.modal-content {background-color: #fff; margin: 15% auto; padding: 25px; border-radius: 8px; width: 350px; position: relative; text-align: center;}
+.dark-mode .modal-content {background-color: #222;}
+.close-modal {position: absolute; right: 15px; top: 10px; font-size: 24px; font-weight: bold; cursor: pointer;}
+
+@media (max-width: 600px) {
+    #menuToggle {display: block;}
+    nav {display: none; flex-direction: column; gap: 10px;}
+    nav.active {display: flex;}
+}
+    </style>
+</head>
+<body>
+
+<header>
+    <button id="menuToggle" class="ui-btn">☰ Menu</button>
+    <button id="themeToggle" class="ui-btn">🌙 Theme</button>
+    <h1>Upcoming Events</h1>
+    <nav id="navMenu">
+        <a href="index.html">Home Page</a>
+        <a href="dashboard.html">Dashboard</a>
+    </nav>
+</header>
+
+<main>
+    <hr>
+    <section>
+        <h2>Upcoming Events</h2>
+        <ul>
+            <li>Web Development Workshop - 22 July 2026 <button class="modal-btn" data-info="Lab 3 starting at 10:00 AM.">View</button></li> 
+            <li>Coding competion 1 August 2026 <button class="modal-btn" data-info="Main Auditorium at 9:00 AM.">View</button></li> 
+            <li>Annual Sports Day 26 August 2026 <button class="modal-btn" data-info="College Ground at 8:00 AM.">View</button></li> 
+            <li>Career Guidance Seminar - 25 September 2026 <button class="modal-btn" data-info="Seminar Hall at 11:00 AM.">View</button></li> 
+        </ul>
+    </section>
+    <hr>
+</main>
+<div id="eventModal" class="modal">
+    <div class="modal-content">
+        <span class="close-modal" id="closeModal">&times;</span>
+        <h2 style="margin-top:0;">Event Information</h2>
+        <p id="modalText"></p>
+    </div>
+</div>
+
+<script>
+    document.getElementById('menuToggle').addEventListener('click', () => document.getElementById('navMenu').classList.toggle('active'));
+    document.getElementById('themeToggle').addEventListener('click', () => document.body.classList.toggle('dark-mode'));
+    const modal = document.getElementById("eventModal");
+    const modalText = document.getElementById("modalText");
+    
+    document.querySelectorAll('.modal-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+            modalText.textContent = this.getAttribute('data-info');
+            modal.style.display = "block";
+        });
+    });
+
+    document.getElementById('closeModal').addEventListener('click', () => modal.style.display = "none");
+    window.addEventListener('click', (e) => { if (e.target === modal) modal.style.display = "none"; });
+</script>
+</body>
+</html>
