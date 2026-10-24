@@ -1,0 +1,12 @@
+[
+    { "id": 1, "title": "Web Development Workshop", "date": "2026-07-22", "category": "Workshop", "desc": "Lab 3 starting at 10:00 AM. Learn HTML, CSS, and JS." },
+    { "id": 2, "title": "Coding Competition", "date": "2026-08-01", "category": "Competition", "desc": "Main Auditorium at 9:00 AM. 12-hour hackathon." },
+    { "id": 3, "title": "Annual Sports Day", "date": "2026-08-26", "category": "Sports", "desc": "College Ground at 8:00 AM. Track and field events." },
+    { "id": 4, "title": "Career Guidance Seminar", "date": "2026-09-25", "category": "Seminar", "desc": "Seminar Hall at 11:00 AM. Industry expert speakers." },
+    { "id": 5, "title": "AI & Machine Learning Bootcamp", "date": "2026-10-05", "category": "Workshop", "desc": "Lab 1 at 9:00 AM. Intro to Python and Neural Networks." },
+    { "id": 6, "title": "Inter-college Basketball", "date": "2026-10-15", "category": "Sports", "desc": "Sports Complex at 4:00 PM. Semi-finals." },
+    { "id": 7, "title": "Cybersecurity Webinar", "date": "2026-10-20", "category": "Seminar", "desc": "Online via Zoom at 2:00 PM. Ethical hacking basics." },
+    { "id": 8, "title": "UI/UX Design Challenge", "date": "2026-11-02", "category": "Competition", "desc": "Design Lab at 10:00 AM. Redesign the student portal." },
+    { "id": 9, "title": "Robotics Expo", "date": "2026-11-15", "category": "Exhibition", "desc": "Main Hall at 10:00 AM. Showcase of student-built robots." },
+    { "id": 10, "title": "End of Semester Fest", "date": "2026-12-01", "category": "Exhibition", "desc": "Campus Square at 5:00 PM. Music, food, and games." }
+]
